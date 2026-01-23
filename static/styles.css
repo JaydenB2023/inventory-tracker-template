@@ -1,0 +1,319 @@
+:root {
+  --bg: #ffffff;
+  --text: #0d0d0d;
+  --muted: #666666;
+  --accent: #f5c400;
+  --accent-dark: #c49a00;
+  --border: #e5e5e5;
+  --card: #ffffff;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.4;
+  padding: 16px 0 32px;
+}
+
+/* Layout */
+.container {
+  max-width: 1200px;
+  margin: 28px auto;
+  padding: 0 20px;
+}
+
+/* Header */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+header a {
+  color: var(--text);
+  text-decoration: none;
+}
+header a:hover { text-decoration: underline; }
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.pill {
+  background: var(--accent);
+  color: #000;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 13px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Page header */
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+h1, h2, h3 { margin-top: 0; margin-bottom: 14px; }
+h1 { font-size: 26px; letter-spacing: -0.3px; }
+
+/* Cards */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+/* Tables */
+.table-wrap { overflow-x: auto; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 6px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+th {
+  text-align: left;
+  font-weight: 700;
+  color: var(--muted);
+  font-size: 13px;
+  letter-spacing: 0.2px;
+}
+
+th a {
+  color: var(--text);
+  text-decoration: none;
+}
+th a:hover { text-decoration: underline; }
+
+tr:hover { background: #fff8de; }
+
+/* Forms (default) */
+.form,
+form {
+  display: grid;
+  gap: 12px;
+  max-width: 700px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+}
+
+.field { display: grid; gap: 6px; }
+
+label { font-weight: 600; color: var(--text); }
+
+input[type="text"],
+input[type="number"],
+input[type="password"],
+input[type="email"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #fff;
+  font-size: 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(245, 196, 0, 0.25);
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+/* Make forms inside table actions not look like full cards */
+.table-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.table-actions form {
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  display: inline;
+  max-width: none;
+}
+
+/* Filters */
+.filters { max-width: none; }
+.search-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.search-bar input[type="text"] { flex: 1; }
+
+.advanced {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: #fff;
+}
+
+.advanced summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.advanced-grid {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+@media (max-width: 900px) {
+  .advanced-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .advanced-grid { grid-template-columns: 1fr; }
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.1s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #000;
+}
+.btn-primary:hover {
+  background: var(--accent-dark);
+  transform: translateY(-1px);
+}
+
+.btn-secondary,
+.btn-ghost {
+  background: #fff;
+  border-color: var(--border);
+  color: var(--text);
+}
+.btn-secondary:hover,
+.btn-ghost:hover { border-color: var(--accent); }
+
+.btn-danger {
+  background: #ffe5e5;
+  color: #7a0c0c;
+  border-color: #f5b5b5;
+}
+.btn-danger:hover {
+  background: #ffcfd1;
+  border-color: #e49a9d;
+}
+
+/* Pagination */
+.pagination {
+  margin-top: 14px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.pagination a { color: var(--text); text-decoration: none; }
+.pagination a:hover { text-decoration: underline; }
+
+.page-jump { margin-top: 6px; }
+
+.error { color: #c1121f; font-size: 13px; }
+.muted { color: var(--muted); }
+
+/* Flash messages */
+.flash { margin: 10px 0 14px; display: grid; gap: 8px; }
+.flash-success {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #cde9c5;
+  background: #f0fbec;
+}
+.flash-error {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #f5b5b5;
+  background: #fff0f0;
+}
+
+/* Back to top (optional) */
+.back-to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 50;
+  display: none;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: var(--accent);
+  color: #000;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  font-weight: 700;
+}
+.back-to-top.visible { display: inline-flex; }
+.back-to-top:hover { background: var(--accent-dark); }
