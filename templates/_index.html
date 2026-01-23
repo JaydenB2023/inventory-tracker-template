@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block title %}Edit Asset{% endblock %}
+
+{% block content %}
+<h1>Edit Asset</h1>
+
+{% if error %}
+  <p class="error">{{ error }}</p>
+{% endif %}
+
+<form method="POST" class="form">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+  <div class="field">
+    <label for="asset_tag">Asset Tag</label>
+    <input
+      type="text"
+      id="asset_tag"
+      name="asset_tag"
+      value="{{ asset.asset_tag }}"
+      required
+      placeholder="e.g., ASSET-1001"
+    >
+  </div>
+
+  <div class="field">
+    <label for="asset_type">Asset Type</label>
+    <input
+      type="text"
+      id="asset_type"
+      name="asset_type"
+      value="{{ asset.asset_type }}"
+      required
+      placeholder="e.g., Server, Laptop, Network"
+    >
+  </div>
+
+  <div class="field">
+    <label for="model">Model</label>
+    <input
+      type="text"
+      id="model"
+      name="model"
+      value="{{ asset.model }}"
+      placeholder="e.g., Dell R740"
+    >
+  </div>
+
+  <div class="field">
+    <label for="hostname">Hostname</label>
+    <input
+      type="text"
+      id="hostname"
+      name="hostname"
+      value="{{ asset.hostname }}"
+      placeholder="e.g., host-01"
+    >
+  </div>
+
+  <div class="field">
+    <label for="owner_group">Owner / Group</label>
+    <input
+      type="text"
+      id="owner_group"
+      name="owner_group"
+      value="{{ asset.owner_group }}"
+      placeholder="e.g., Platform Team"
+    >
+  </div>
+
+  <div class="field">
+    <label for="status">Status</label>
+    <input
+      type="text"
+      id="status"
+      name="status"
+      value="{{ asset.status }}"
+      required
+      placeholder="e.g., In Use, In Stock, Retired"
+    >
+  </div>
+
+  <div class="field">
+    <label for="last_updated">Last Updated</label>
+    <input
+      type="date"
+      id="last_updated"
+      name="last_updated"
+      value="{{ asset.last_updated }}"
+    >
+  </div>
+
+  <div class="field">
+    <label for="notes">Notes</label>
+    <textarea
+      id="notes"
+      name="notes"
+      rows="4"
+      placeholder="Optional notes..."
+    >{{ asset.notes }}</textarea>
+  </div>
+
+  <div class="actions">
+    <button class="btn btn-primary" type="submit">Update</button>
+    <a class="btn btn-secondary" href="{{ url_for('index') }}">Cancel</a>
+  </div>
+</form>
+{% endblock %}

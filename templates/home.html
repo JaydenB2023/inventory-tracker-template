@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Inventory Hub{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <span class="pill">{% block badge %}Template{% endblock %}</span>
+      <span>{% block brand %}Inventory Hub{% endblock %}</span>
+    </div>
+
+    <nav class="actions">
+      <a class="btn btn-ghost" href="{{ url_for('home') }}">Home</a>
+      <a class="btn btn-primary" href="{{ url_for('index') }}">Assets</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash">
+          {% for category, message in messages %}
+            <div class="flash-{{ category }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>
