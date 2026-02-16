@@ -23,9 +23,11 @@ It is designed for local development and demonstration purposes and does not inc
 authentication or production security features. Database portion is not included.
 
 ## Run locally
-```bash
+bash
 python -m venv .venv
 source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 python app.py
+
+
 
