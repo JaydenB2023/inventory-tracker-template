@@ -31,3 +31,4 @@ python app.py
 
 
 
+<img width="1579" height="851" alt="Screenshot 2026-02-16 at 11 16 02" src="https://github.com/user-attachments/assets/95177c12-895a-4fcd-8d76-0a8db317800f" />
