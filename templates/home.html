@@ -1,36 +1,44 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}Inventory Hub{% endblock %}</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Inventory Home</title>
 </head>
 <body>
-  <header>
-    <div class="brand">
-      <span class="pill">{% block badge %}Template{% endblock %}</span>
-      <span>{% block brand %}Inventory Hub{% endblock %}</span>
-    </div>
-
-    <nav class="actions">
-      <a class="btn btn-ghost" href="{{ url_for('home') }}">Home</a>
-      <a class="btn btn-primary" href="{{ url_for('index') }}">Assets</a>
-    </nav>
-  </header>
-
-  <div class="container">
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        <div class="flash">
-          {% for category, message in messages %}
-            <div class="flash-{{ category }}">{{ message }}</div>
-          {% endfor %}
+    <header>
+        <div class="brand">
+            <span class="pill">Team</span>
+            <span>Inventory Hub</span>
         </div>
-      {% endif %}
-    {% endwith %}
-
-    {% block content %}{% endblock %}
-  </div>
+        <a class="btn btn-primary btn-icon-home" href="{{ url_for('home') }}">Home</a>
+    </header>
+    <div class="container">
+        <div class="card home-hero">
+            <h1>Choose a dataset below:</h1>
+        </div>
+        <div class="card">
+            <h2 class="title-with-icon"></h2>
+            <div class="home-grid">
+                {% for section in sections %}
+                <article class="card dataset-card">
+                    <div class="dataset-content">
+                        <div>
+                            <h3 class="dataset-title">{{ section.label }}</h3>
+                            <p class="muted dataset-description">{{ section.description }}</p>
+                        </div>
+                        <div class="actions dataset-actions">
+                            {% if section.endpoint %}
+                            <a class="btn btn-primary btn-icon-open" href="{{ url_for(section.endpoint) }}">Open Index</a>
+                            {% else %}
+                            <span class="btn btn-primary btn-icon-open btn-disabled">Missing endpoint</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 </body>
 </html>
